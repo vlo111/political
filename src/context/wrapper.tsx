@@ -11,8 +11,8 @@ export const ArticleWrapper: React.FC = () => {
 
   const callbacks = useMemo(
     () => ({
-      startOpenNodeCreate: (payload: IIsOpen) => handleAction(ArticleAction.OPEN_CREATE_NODE_START, payload),
-      finishOpenNodeCreate: () => handleAction(ArticleAction.OPEN_CREATE_NODE_FINISH),
+      startOpenTags: (payload: IIsOpen) => handleAction(ArticleAction.OPEN_TAGS_START, payload),
+      finishOpenTags: () => handleAction(ArticleAction.OPEN_TAGS_FINISH),
     }),
     [handleAction]
   );

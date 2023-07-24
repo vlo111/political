@@ -1,8 +1,8 @@
 import { IIsOpen } from './reducer/types';
 
 export type ArticleReducerSetState = {
-  startOpenNodeCreate: VoidFunction;
-  finishOpenNodeCreate: VoidFunction;
+  startOpenTags: VoidFunction;
+  finishOpenTags: VoidFunction;
 };
 
 export type ArticleReducerState = {

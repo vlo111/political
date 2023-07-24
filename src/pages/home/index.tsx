@@ -1,14 +1,14 @@
 import { useArticle } from '../../context/wrapper';
 
 export const Home = () => {
-  const { openNodeCreate, startOpenNodeCreate, finishOpenNodeCreate } = useArticle();
+  const { openNodeCreate, startOpenTags, finishOpenTags } = useArticle();
 
   return (
     <div>
       <div>Home</div>
       <div>{openNodeCreate.isOpened ? 'start' : 'finish'}</div>
-      <button onClick={() => startOpenNodeCreate()}>start</button>
-      <button onClick={() => finishOpenNodeCreate()}>finish</button>
+      <button onClick={() => startOpenTags()}>start</button>
+      <button onClick={() => finishOpenTags()}>finish</button>
     </div>
   );
 };

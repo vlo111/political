@@ -1,28 +1,45 @@
-import { useQuery, UseQueryOptions } from '@tanstack/react-query';
+import { useQuery, UseQueryOptions, UseQueryResult } from '@tanstack/react-query';
 
 import client from 'api/client';
 
+/** Node Type Property */
+export type ProjectNodeTypePropertyReturnData = {
+  id: string;
+  user: string;
+  date: string;
+  preview: string;
+  title: string;
+  description: string;
+  descriptionReferences: string;
+  status: string;
+  section: string;
+  createdAt: string;
+  updatedAt: string;
+  html: [];
+  tags: [];
+  author: null;
+  softDelete: null;
+  views: 8;
+};
+
+type ReturnData = {
+  data: ProjectNodeTypePropertyReturnData;
+};
+
+type Options = UseQueryOptions<ReturnData, Error, ProjectNodeTypePropertyReturnData>;
+type Result = UseQueryResult<ProjectNodeTypePropertyReturnData>;
+
 export const url = '/public/getHero';
 
-export const useGetHeaderArticle: unknown = (
-  options:
-    | (Omit<UseQueryOptions<unknown, unknown, unknown, string[]>, 'initialData' | 'queryFn' | 'queryKey'> & {
-        initialData?: (() => undefined) | undefined;
-      })
-    | undefined
-) => {
-  const result = useQuery(
-    [url],
-    async () => {
-      const response = await client.get(`${url}`);
-      return response.data;
-    },
-    options
-  );
+export const useGetHeaderArticle = (options: Options): Result => {
+  const result = useQuery({
+    queryKey: [url],
+    queryFn: () => client.get(url).then((data) => data.data),
+    ...options,
+  });
   const { data, isSuccess } = result;
 
   return {
-    ...result,
-    data: isSuccess ? data : [],
-  };
+    data: isSuccess ? data : ([] as ProjectNodeTypePropertyReturnData[]),
+  } as Result;
 };

@@ -5,12 +5,12 @@ const initState = {
 };
 
 export enum ITEM {
-  OPEN_CREATE_NODE = 'openNodeCreate',
+  OPEN_TAGS = 'openNodeCreate',
 }
 
 export enum ArticleAction {
-  OPEN_CREATE_NODE_START = 'OPEN_CREATE_NODE_START',
-  OPEN_CREATE_NODE_FINISH = 'OPEN_CREATE_NODE_FINISH',
+  OPEN_TAGS_START = 'OPEN_TAGS_START',
+  OPEN_TAGS_FINISH = 'OPEN_TAGS_FINISH',
 }
 
 export const articleInitialState: ArticleState = {
@@ -35,10 +35,10 @@ export const articleReducer: (state: ArticleState, action: ArticleActionType) =>
   });
 
   switch (type) {
-    case ArticleAction.OPEN_CREATE_NODE_START:
-      return start(ITEM.OPEN_CREATE_NODE);
-    case ArticleAction.OPEN_CREATE_NODE_FINISH:
-      return end(ITEM.OPEN_CREATE_NODE);
+    case ArticleAction.OPEN_TAGS_START:
+      return start(ITEM.OPEN_TAGS);
+    case ArticleAction.OPEN_TAGS_FINISH:
+      return end(ITEM.OPEN_TAGS);
     default:
       return state;
   }
