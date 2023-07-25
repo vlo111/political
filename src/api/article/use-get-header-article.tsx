@@ -2,8 +2,8 @@ import { useQuery, UseQueryOptions, UseQueryResult } from '@tanstack/react-query
 
 import client from 'api/client';
 
-/** Node Type Property */
-export type ProjectNodeTypePropertyReturnData = {
+/** Article Properties */
+export type HeaderArticle = {
   id: string;
   user: string;
   date: string;
@@ -23,23 +23,24 @@ export type ProjectNodeTypePropertyReturnData = {
 };
 
 type ReturnData = {
-  data: ProjectNodeTypePropertyReturnData;
+  data: HeaderArticle;
 };
 
-type Options = UseQueryOptions<ReturnData, Error, ProjectNodeTypePropertyReturnData>;
-type Result = UseQueryResult<ProjectNodeTypePropertyReturnData>;
+type Options = UseQueryOptions<ReturnData, Error, HeaderArticle>;
+type Result = UseQueryResult<HeaderArticle>;
 
 export const url = '/public/getHero';
 
 export const useGetHeaderArticle = (options: Options): Result => {
   const result = useQuery({
     queryKey: [url],
-    queryFn: () => client.get(url).then((data) => data.data),
+    queryFn: () => client.get(url).then((data) => data),
     ...options,
   });
+
   const { data, isSuccess } = result;
 
   return {
-    data: isSuccess ? data : ([] as ProjectNodeTypePropertyReturnData[]),
+    data: isSuccess ? data : ([] as HeaderArticle[]),
   } as Result;
 };

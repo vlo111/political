@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Col, Row } from 'antd';
 import { COLORS } from '../../helpers/constants';
 import HeaderArticleUrl from 'components/icons/article.png';
+import { useGetHeaderArticle } from '../../api/article/use-get-header-article';
 
 const Wrapper = styled.div`
   background: ${COLORS.PRIMARY.ORANGE};
@@ -18,12 +19,20 @@ const Wrapper = styled.div`
 `;
 
 export const HeaderArticle = () => {
+  const { data } = useGetHeaderArticle({});
+
+  // eslint-disable-next-line no-console
+  console.log(data);
   return (
     <Wrapper>
       <div>
         <Row>
-          <Col></Col>
-          <Col></Col>
+          <Col span={24}>
+            <h3>{data?.title}</h3>
+          </Col>
+          <Col span={24}>
+            <strong>{data?.description}</strong>
+          </Col>
           <Col></Col>
         </Row>
       </div>

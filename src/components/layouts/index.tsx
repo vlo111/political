@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { ArticleWrapper } from 'context/wrapper';
 import { Header } from '../headers';
 import { HeaderArticle } from '../headers/article';
+import { Tags } from '../tags';
 
 const Layout = styled(LayoutComponent)`
   background: white;
@@ -11,7 +12,6 @@ const Layout = styled(LayoutComponent)`
 const { Content: ContentComponent } = LayoutComponent;
 
 const Content = styled(ContentComponent)`
-  padding: 0 50px;
   margin: 0 auto;
 `;
 
@@ -21,7 +21,7 @@ export const HomeLayout = () => {
       <Header />
       <HeaderArticle />
       <Content>
-        <div style={{ background: 'red' }}>tags</div>
+        <Tags />
         <ArticleWrapper />
       </Content>
     </Layout>
